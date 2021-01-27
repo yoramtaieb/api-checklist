@@ -4,6 +4,7 @@ const ConflictError = require("./conflict");
 const UnAuthorizedError = require("./unauthorized");
 const ServerError = require("./server_error");
 const ForbiddenError = require("./forbidden_error");
+const ValidationError = require("./validation_error");
 
 module.exports = {
   NotFoundError,
@@ -12,4 +13,5 @@ module.exports = {
   UnAuthorizedError,
   ServerError,
   ForbiddenError,
+  ValidationError,
 };
