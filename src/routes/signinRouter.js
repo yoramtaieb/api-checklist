@@ -1,7 +1,12 @@
 const signinRouter = require("express").Router();
+const { signin } = require("../controllers/User");
 
-signinRouter.get("/signin", (request, response) => {
-  response.json({ message: "je suis la route signin" });
+const { OK } = require("../helpers/status_code");
+
+signinRouter.post("/signin", async (request, response) => {
+  const { email, password } = request.body;
+  const token = await signin(email, password);
+  response.status(OK).json({ token });
 });
 
 module.exports = signinRouter;

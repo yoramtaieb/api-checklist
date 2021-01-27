@@ -1,7 +1,7 @@
 const signupRouter = require("express").Router();
 const { signup, checkEmail } = require("../controllers/User");
-const { ValidationError, ConflictError } = require("../helpers/errors");
 
+const { ValidationError, ConflictError } = require("../helpers/errors");
 const { CREATED } = require("../helpers/status_code");
 const { userValidation } = require("../validators");
 

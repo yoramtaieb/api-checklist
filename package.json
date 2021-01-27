@@ -31,6 +31,8 @@
         "mysql2": "^2.2.5",
         "path": "^0.12.7",
         "sequelize": "^6.4.0",
+        "uuid": "^8.3.2",
+        "uuid-validate": "0.0.3",
         "uuidv4": "^6.2.6"
     },
     "devDependencies": {
