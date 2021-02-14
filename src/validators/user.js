@@ -5,52 +5,52 @@ const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const firstNameValidation = (firstName) => {
   if (isNil(firstName) || firstName === "") {
-    return "Le prénom doit être renseigné";
+    return "Le prénom doit être renseigné.";
   }
   if (typeof firstName !== "string") {
-    return "Le prénom doit être une chaîne de caractères";
+    return "Le prénom doit être une chaîne de caractères.";
   }
   if (firstName.length < 3 || firstName.length > 50) {
-    return "Le prénom doit contenir entre 3 et 50 caractères";
+    return "Le prénom doit contenir entre 3 et 50 caractères.";
   }
   return null;
 };
 
 const lastNameValidation = (lastName) => {
   if (isNil(lastName) || lastName === "") {
-    return "Le nom doit être renseigné";
+    return "Le nom doit être renseigné.";
   }
   if (typeof lastName !== "string") {
-    return "Le nom doit être une chaîne de caractères";
+    return "Le nom doit être une chaîne de caractères.";
   }
   if (lastName.length < 3 || lastName.length > 50) {
-    return "Le nom doit contenir entre 3 et 50 caractères";
+    return "Le nom doit contenir entre 3 et 50 caractères.";
   }
   return null;
 };
 
 const emailValidation = (email) => {
   if (isNil(email) || email === "") {
-    return "l'email doit être renseigné";
+    return "L'email doit être renseigné.";
   }
   if (typeof email !== "string") {
-    return "L'email doit être une chaîne de caractères";
+    return "L'email doit être une chaîne de caractères.";
   }
   if (!EMAIL_REGEX.test(email)) {
-    return "l'email doit contenir un @";
+    return "L'email doit contenir un @.";
   }
   if (email.length > 255) {
-    return "L'email doit contenir moins de 255 caractères";
+    return "L'email doit contenir moins de 255 caractères.";
   }
   return null;
 };
 
 const passwordValidation = (password) => {
   if (isNil(password) || password === "") {
-    return "le mot de passe doit être renseigné";
+    return "Le mot de passe doit être renseigné.";
   }
   if (!PASSWORD_REGEX.test(password)) {
-    return "le mot de passe doit contenir entre 8 et 20 caractère, inclure 1 lettre minuscule et majuscule, 1 chiffre, et 1 caractère spécial. ";
+    return "Le mot de passe doit contenir entre 8 et 20 caractère, inclure 1 lettre minuscule et majuscule, 1 chiffre, et 1 caractère spécial.";
   }
 };
 

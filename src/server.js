@@ -5,9 +5,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 const routes = require("./routes");
-const { notFoundHandler, errorLogger, errorHandler } = require("./middlewares");
 
-require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config();
+
+const { notFoundHandler, errorLogger, errorHandler } = require("./middlewares");
 
 // Middlewares
 server.use(bodyParser.json());
