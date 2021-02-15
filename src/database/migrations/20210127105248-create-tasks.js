@@ -8,6 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      idList: {
+        type: Sequelize.INTEGER,
+        references: {
+          allowNull: false,
+          model: {
+            tableName: "Lists",
+          },
+          key: "id",
+        },
+      },
       name: {
         type: Sequelize.STRING(50),
       },

@@ -26,6 +26,7 @@ module.exports = async (request, response, next) => {
         "Vous n'avez pas accès à cette ressource"
       );
     }
+
     request.user = user;
     console.log("==>", request.user);
     next();

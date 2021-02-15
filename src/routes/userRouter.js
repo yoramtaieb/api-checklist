@@ -1,6 +1,5 @@
 const userRouter = require("express").Router();
-const { signin } = require("../controllers/User");
-const { signup, checkEmail } = require("../controllers/User");
+const { signup, signin, checkEmail } = require("../controllers/User");
 
 const { ValidationError, ConflictError } = require("../helpers/errors");
 const { CREATED } = require("../helpers/status_code");
@@ -27,7 +26,7 @@ userRouter.post("/signup", async (request, response) => {
   } else {
     throw new ConflictError(
       "Conflit",
-      "Un utilisateur utilisant cette adresse email est déjà enregistré"
+      "Un utilisateur utilisant cette adresse email est déjà enregistré."
     );
   }
 });

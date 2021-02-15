@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
 const { pick } = require("lodash");
 const { Users } = require("../models");
 
@@ -31,7 +30,7 @@ module.exports = {
     if (!userFound) {
       throw new UnauthorizedError(
         "Utilisateur non authentifié",
-        "Le nom d'utilisateur n'est pas correct"
+        "Le nom d'utilisateur n'est pas correct."
       );
     }
 
@@ -39,7 +38,7 @@ module.exports = {
     if (!comparePassword) {
       throw new UnauthorizedError(
         "Utilisateur non authentifié",
-        "Le mot de passe n'est pas correct"
+        "Le mot de passe n'est pas correct."
       );
     }
 
