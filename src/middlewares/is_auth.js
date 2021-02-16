@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const { UnAuthorizedError, ForbiddenError } = require("../helpers/errors");
+const { UnAuthorizedError } = require("../helpers/errors");
 
 module.exports = async (request, response, next) => {
   const authHeader = request.headers.authorization;
@@ -20,15 +20,8 @@ module.exports = async (request, response, next) => {
         "Vous devez fournir un token valide pour accéder à cette ressource"
       );
     }
-    if (!user.admin) {
-      throw new ForbiddenError(
-        "Utilisateur non autorisé",
-        "Vous n'avez pas accès à cette ressource"
-      );
-    }
 
     request.user = user;
-    console.log("==>", request.user);
     next();
   });
 };

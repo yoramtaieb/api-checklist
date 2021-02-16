@@ -45,7 +45,7 @@ module.exports = {
     const secretKey = process.env.JWT_SIGN_SECRET;
     const token = jwt.sign(
       {
-        id: userFound.id,
+        userId: userFound.id,
         email: userFound.email,
       },
       secretKey,
