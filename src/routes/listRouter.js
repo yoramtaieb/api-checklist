@@ -5,6 +5,7 @@ const {
   getListByName,
   updateList,
   deleteList,
+  getListById,
 } = require("../controllers/Lists");
 const is_auth = require("../middlewares/is_auth");
 
@@ -16,7 +17,7 @@ listRouter.get("/list", async (request, response) => {
   response.status(OK).json(list);
 });
 
-listRouter.get("/list/:name", async (request, response) => {
+listRouter.get("/list/search/:name", async (request, response) => {
   const list = await getListByName(request.params.name);
   if (!list) {
     throw new NotFoundError(
@@ -24,6 +25,18 @@ listRouter.get("/list/:name", async (request, response) => {
       "Cette liste n'existe pas."
     );
   }
+  return response.status(OK).json(list);
+});
+
+listRouter.get("/list/:id", async (request, response) => {
+  const list = await getListById(request.params.id);
+  if (!list) {
+    throw new NotFoundError(
+      "Ressource introuvable.",
+      "Cette liste n'existe pas."
+    );
+  }
+  console.log("list", list);
   return response.status(OK).json(list);
 });
 
@@ -36,7 +49,7 @@ listRouter.put("/list/edit/:id", updateList);
 
 listRouter.delete("/list/delete/:id", async (request, response) => {
   await deleteList(request.params.id);
-  response.status(OK).json({ message: "Le produit a été supprimé" });
+  response.status(OK).json({ message: "La liste a été supprimée" });
 });
 
 module.exports = listRouter;

@@ -51,17 +51,28 @@ module.exports = {
     });
   },
 
-  updateList: async (request, response) => {
-    const { name } = request.body;
-    const newData = request.body;
-    await Lists.update(newData, {
-      where: {
-        name: name,
-      },
-      raw: true,
-      attributes: ["name"],
+  getListById: async (id) => {
+    return await Lists.findOne({
+      where: { id: id },
     });
-    return response.status(OK).json(newData);
+  },
+
+  updateList: async (request, response) => {
+    const id = request.params.id;
+    const newData = request.body.name;
+    const listUpdated = await Lists.update(
+      { name: newData },
+      { where: { id: id } }
+    );
+    if (!listUpdated) {
+      throw new NotFoundError(
+        "Ressource introuvable",
+        "Cette liste n'existe pas."
+      );
+    }
+    return response
+      .status(OK)
+      .json({ message: "La liste a bien été modifiée.", newData });
   },
 
   deleteList: async (id) => {
@@ -71,7 +82,7 @@ module.exports = {
     if (!listFound) {
       throw new NotFoundError(
         "Ressource introuvable",
-        "Ce produit n'existe pas"
+        "Cette liste n'existe pas."
       );
     }
     await Lists.destroy({
