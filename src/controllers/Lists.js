@@ -1,6 +1,7 @@
 const { Lists, Users } = require("../models");
 
 const { OK } = require("../helpers/status_code");
+const NotFoundError = require("../helpers/errors/not_found_error");
 
 const listAttributes = ["id", "name"];
 
@@ -37,8 +38,8 @@ module.exports = {
     });
     if (findList.length === 0) {
       throw new NotFoundError(
-        "Ressource introuvable",
-        "Aucuns produits répertoriés"
+        "Ressource introuvable.",
+        "Aucunes listes répertoriées."
       );
     }
     return findList;

@@ -12,7 +12,7 @@ const is_auth = require("../middlewares/is_auth");
 const { CREATED, OK } = require("../helpers/status_code");
 const NotFoundError = require("../helpers/errors/not_found_error");
 
-listRouter.get("/list", async (request, response) => {
+listRouter.get("/list/all", async (request, response) => {
   const list = await getAllList();
   response.status(OK).json(list);
 });
@@ -45,9 +45,9 @@ listRouter.post("/list", is_auth, async (request, response) => {
   return response.status(CREATED).json(newList);
 });
 
-listRouter.put("/list/edit/:id", updateList);
+listRouter.put("/list/edit/:id", is_auth, updateList);
 
-listRouter.delete("/list/delete/:id", async (request, response) => {
+listRouter.delete("/list/delete/:id", is_auth, async (request, response) => {
   await deleteList(request.params.id);
   response.status(OK).json({ message: "La liste a été supprimée" });
 });
