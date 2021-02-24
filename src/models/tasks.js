@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Lists, {
         foreignKey: {
-          name: "idTasks",
+          name: "idList",
         },
       });
     }
@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING(50),
       description: DataTypes.STRING(180),
-      priority: DataTypes.STRING(50),
     },
     {
       sequelize,

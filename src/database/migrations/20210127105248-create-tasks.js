@@ -24,9 +24,6 @@ module.exports = {
       description: {
         type: Sequelize.STRING(180),
       },
-      priority: {
-        type: Sequelize.STRING(50),
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
