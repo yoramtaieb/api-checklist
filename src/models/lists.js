@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.Tasks, {
         foreignKey: {
-          name: "idTask",
+          name: "idList",
         },
       });
       this.belongsTo(models.Users, {

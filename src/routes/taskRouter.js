@@ -7,10 +7,8 @@ taskRouter.get("/task", (request, response) => {
   response.status(200).json({ message: "je suis la page task" });
 });
 
-taskRouter.post("/task", is_auth, async (request, response) => {
-  const idList = request.params;
-  console.log("===>", idList);
-  const newTask = await addTask(request.body);
+taskRouter.post("/task/:listId", is_auth, async (request, response) => {
+  const newTask = await addTask(request.body, request.params.listId);
   return response.status(CREATED).json(newTask);
 });
 
